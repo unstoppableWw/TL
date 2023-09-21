@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img class="top" src="https://www.tencent.com/img/banners/brief-1-1.jpg" alt="">
-    <div class="content">
+    <div class="content1">
       <div class="carousel">
         <el-carousel height="300px">
           <el-carousel-item v-for="item in 4" :key="item">
@@ -18,6 +18,8 @@
           </ul>
         </div>
       </div>
+    </div>
+    <div class="content2">
 
     </div>
   </div>
@@ -35,7 +37,7 @@ import { ElButton } from 'element-plus'
     height: 400px;
   }
 
-  .content {
+  .content1 {
     margin: 20px auto;
     width: 77%;
     height: 100%;
@@ -69,6 +71,12 @@ import { ElButton } from 'element-plus'
         }
       }
     }
+  }
+  .content2{
+    width: 77%;
+    height: 300px;
+    margin: 0 auto;
+    background-color: pink;
   }
 }
 </style>
