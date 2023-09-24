@@ -53,8 +53,6 @@
   width: 100%;
   height: 350px;
   background-color: #1d282d;
-
-
   .content {
     width: 77%;
     height: 100%;

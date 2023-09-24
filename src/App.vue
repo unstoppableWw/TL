@@ -3,11 +3,8 @@
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav> -->
-
   <div>
-    <TopNav />
     <RouterView />
-    <Bottom/>
   </div>
 </template>
 <script setup>
@@ -17,6 +14,4 @@ import TopNav from '@/components/TopNav.vue'
 import Bottom from '@/components/Bottom.vue'
 </script>
 
-<style  lang="scss">
-
-</style>
+<style  lang="scss"></style>

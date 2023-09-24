@@ -3,8 +3,12 @@
     <div class="logo">1111</div>
     <div class="list">
       <ul>
-          <li><a href="#">首页</a></li>
-          <li><a href="#">产品介绍</a></li>
+          <li>
+          <RouterLink to="/">首页</RouterLink>
+          </li>
+          <li>
+          <RouterLink to="/tiku">题库</RouterLink>
+          </li>
           <li><a href="#">服务介绍</a></li>
           <li><a href="#">关于我们</a></li>
           <li><a href="#">联系我们</a></li>
@@ -44,14 +48,17 @@
     height: 50px;
     background: red;
   }
+
   .list {
     width: 700px;
     display: flex;
     align-items: center;
+
     ul {
       display: flex;
       position: relative;
       justify-content: space-around;
+
       li {
         list-style: none;
         width: 120px;
