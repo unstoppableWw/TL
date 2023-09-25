@@ -43,11 +43,9 @@ const activecity = ref('北京市')
 const activeform = ref('无领导')
 const changecity = function (item) {
   activecity.value = item
-  console.log(item);
 }
 const changeform = function (item) {
   activeform.value = item
-  console.log(item);
 }
 </script>
 <style scoped lang="scss">
