@@ -49,9 +49,7 @@ const changeform = function (item) {
 }
 </script>
 <style scoped lang="scss">
-.tk-top {
-  background-color: #3c464f;
-}
+
 
 .tiku {
   padding-top: 70px;

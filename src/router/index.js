@@ -13,7 +13,7 @@ const router = createRouter({
       path: '/tiku',
       name: 'tiku',
       component: () => import('../views/Tiku.vue')
-    }
+    },
   ]
 })
 

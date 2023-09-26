@@ -1,7 +1,7 @@
 <template>
   <div class="nav">
     <div class="logo">
-      <img src="../../public/logo.png" alt="">
+      <img src="../../logo.png" alt="">
     </div>
     <div class="list">
       <ul>
@@ -69,26 +69,41 @@
       <p>登录</p>
     </div>
   </div>
-  <!-- <Login /> -->
+  <div class="login-bg" v-if="isshowlogin" @click="close" >
+    <Login @click.stop  v-model:isshowlogin="isshowlogin"/>
+  </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+
 import Login from '@/components/Login.vue'
 //展示头像下的菜单栏
 const isshow = ref(false)
 //显示登录或者头像
 const showicon = ref(false)
-const show = function () {
-  isshow.value = !isshow.value
-  console.log(isshow.value)
-}
-const showlogin = function () {
+//显示登录组件
+const isshowlogin = ref(false)
 
+const show = () => {
+  if (!isshow.value) {
+    isshow.value = !isshow.value
+  }
+}
+const showlogin = () => {
+  if (!isshowlogin.value) {
+    isshowlogin.value = !isshowlogin.value;
+  }
+}
+const close = () => {
+  if (isshowlogin.value) {
+    isshowlogin.value = !isshowlogin.value;
+  }
 }
 // 监听整个文档的点击事件
 onMounted(() => {
   document.addEventListener('click', closeMenu)
+
 })
 
 // 处理点击事件，如果点击了菜单以外的区域，就关闭菜单
@@ -227,4 +242,16 @@ onUnmounted(() => {
       color: #3c7cfc;
     }
   }
-}</style>
+}
+
+.login-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  /* 半透明黑色背景 */
+  z-index: 1;
+}
+</style>
