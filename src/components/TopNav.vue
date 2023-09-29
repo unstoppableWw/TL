@@ -12,7 +12,7 @@
           <RouterLink to="/tiku">题库</RouterLink>
         </li>
           <li><a href="#">服务介绍</a></li>
-          <li><a href="#">关于我们</a></li>
+          <li><RouterLink to="/about">关于我们</RouterLink></li>
       </ul>
     </div>
     <div class="icon" @click="show" v-if="showicon">

@@ -1,7 +1,7 @@
 <template>
-  <TopNav/>
+  
   <Home />
-  <Bottom/>
+  
 </template>
 <script setup>
 import TopNav from '@/components/TopNav.vue'

@@ -14,6 +14,11 @@ const router = createRouter({
       name: 'tiku',
       component: () => import('../views/Tiku.vue')
     },
+    {
+      path: '/about',
+      name: 'about',
+      component: () => import('../views/About.vue')
+    },
   ]
 })
 

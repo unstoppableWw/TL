@@ -4,7 +4,9 @@
         <RouterLink to="/about">About</RouterLink>
       </nav> -->
   <div>
+    <TopNav/>
     <RouterView />
+    <Bottom/>
   </div>
 </template>
 <script setup>
