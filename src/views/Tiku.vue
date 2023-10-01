@@ -1,5 +1,4 @@
 <template>
-  <TopNav class="tk-top" />
   <div class="tiku">
     <div class="content">
       <div class="select">
@@ -30,7 +29,6 @@
       </div>
     </div>
   </div>
-  <Bottom />
 </template>
 
 <script setup >
@@ -49,8 +47,6 @@ const changeform = function (item) {
 }
 </script>
 <style scoped lang="scss">
-
-
 .tiku {
   padding-top: 70px;
   width: 100%;
