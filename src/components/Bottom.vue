@@ -50,11 +50,13 @@
 
 <style lang="scss" scoped>
 .bottom {
+  position: relative;
+  bottom: 0;
   width: 100%;
   height: 350px;
   background-color: #1d282d;
   .content {
-    width: 77%;
+    width: 70%;
     height: 100%;
     margin: 0 auto;
     

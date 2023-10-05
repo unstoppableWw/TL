@@ -11,8 +11,11 @@
           <li>
           <RouterLink to="/tiku">题库</RouterLink>
         </li>
-          <li><a href="#">服务介绍</a></li>
-          <li><RouterLink to="/about">关于我们</RouterLink></li>
+        <li>
+          <RouterLink to="/about">联系我们</RouterLink>
+        </li>
+          <li><RouterLink to="/us">关于我们</RouterLink></li>
+       
       </ul>
     </div>
     <div class="icon" @click="show" v-if="showicon">
@@ -69,8 +72,8 @@
       <p>登录</p>
     </div>
   </div>
-  <div class="login-bg" v-if="isshowlogin" @click="close" >
-    <Login @click.stop  v-model:isshowlogin="isshowlogin"/>
+  <div class="login-bg" v-if="isshowlogin" @click="close">
+    <Login @click.stop v-model:isshowlogin="isshowlogin" />
   </div>
 </template>
 
