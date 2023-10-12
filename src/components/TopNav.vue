@@ -19,7 +19,7 @@
       </ul>
     </div>
     <div class="icon" @click="show" v-if="showicon">
-      <img src="../../public/avatar.jpg" alt="">
+      <img src="/avatar.jpg" alt="">
       <div class="menu" id="menu" v-if="isshow">
         <ul>
           <li>
@@ -61,7 +61,7 @@
                   d="M691.541333 703.146667c-5.461333 0-10.24-2.048-14.336-6.144-8.192-8.192-8.192-21.162667 0-28.672l170.666667-170.666667c8.192-8.192 21.162667-8.192 28.672 0 8.192 8.192 8.192 21.162667 0 28.672l-170.666667 170.666667c-4.096 4.096-8.874667 6.144-14.336 6.144z"
                   fill="#cdcdcd" p-id="8220"></path>
               </svg>
-              <span id="user-id">退出登录</span>
+              <span id="user-id" @click="quit">退出登录</span>
             </div>
           </li>
         </ul>
@@ -73,7 +73,7 @@
     </div>
   </div>
   <div class="login-bg" v-if="isshowlogin" @click="close">
-    <Login @click.stop v-model:isshowlogin="isshowlogin" />
+    <Login @click.stop v-model:isshowlogin="isshowlogin" v-model:showicon="showicon"/>
   </div>
 </template>
 
@@ -84,9 +84,9 @@ import Login from '@/components/Login.vue'
 //展示头像下的菜单栏
 const isshow = ref(false)
 //显示登录或者头像
-const showicon = ref(false)
+const showicon = ref(null)
 //显示登录组件
-const isshowlogin = ref(false)
+const isshowlogin = ref(null)
 
 const show = () => {
   if (!isshow.value) {
@@ -94,17 +94,29 @@ const show = () => {
   }
 }
 const showlogin = () => {
-  if (!isshowlogin.value) {
-    isshowlogin.value = !isshowlogin.value;
-  }
+  isshowlogin.value=true
 }
 const close = () => {
   if (isshowlogin.value) {
     isshowlogin.value = !isshowlogin.value;
   }
 }
+
+//退出登录
+const quit=()=>{
+  localStorage.removeItem("token")
+  showicon.value=false
+}
 // 监听整个文档的点击事件
 onMounted(() => {
+  //如果token不存在，就显示头像
+  if(!localStorage.getItem('token')){
+    isshowlogin.value=true
+    showicon.value=false
+  }else{
+    isshowlogin.value=false
+    showicon.value=true
+  }
   document.addEventListener('click', closeMenu)
 
 })
@@ -131,6 +143,7 @@ onUnmounted(() => {
   height: 72px;
   position: absolute;
   padding: 0 15%;
+  // z-index: 999;
 
   // z-index: 999;
   background-color: rgba(0, 0, 0, 0.4);
@@ -197,7 +210,7 @@ onUnmounted(() => {
         height: 10px;
         top: -10px;
         right: 8px;
-        background-image: url(../../public/user-arrow.png);
+        background-image: url(/user-arrow.png);
         background-repeat: no-repeat;
         background-size: contain;
       }

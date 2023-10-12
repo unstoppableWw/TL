@@ -16,15 +16,15 @@
 
 <script setup >
 import { ref, reactive, toRefs, onMounted } from 'vue'
-import { useUserStore } from '@/stores/user'; 
 
-const props = defineProps(['isshowlogin'])
-const emit = defineEmits(['update:isshowlogin'])
+import { password_Login } from '@/request/api/home'
+const props = defineProps(['isshowlogin',"showicon"])
+const emit = defineEmits(['update:isshowlogin','update:showicon'])
 
 const selectloginform=ref(true)
 const platext = ref('账号')
 const plapassword = ref('密码')
-const store = useUserStore()
+
 
 const gettext=ref("")
 const getps=ref("")
@@ -39,13 +39,19 @@ const changeform=()=>{
   }
 }
 
-const login=()=>{
+const login=async ()=>{
   //把账号密码存储到Pinia库中
-  console.log(props.isshowlogin);
-  store.userid=gettext
-  store.password=getps
+  let {data}=await password_Login(gettext.value,getps.value);
+  localStorage.setItem("token", data.data.token);
+  // store.getToken(localStorage.getItem("token"))
+  // console.log(store.token);
+  // console.log(props.isshowlogin);
+  // store.userid=gettext
+  // store.password=getps
   emit('update:isshowlogin', false)
-  console.log(props);
+  emit('update:showicon', true)
+  
+  // console.log(props);
   
 }
 </script>

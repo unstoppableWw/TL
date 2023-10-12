@@ -1,6 +1,5 @@
 <template>
     <!-- 顶部导航 -->
-    <!-- <TopNav style="background-color: #1d282d;position: relative;" /> -->
     <div class="news_container">
         <!-- 主标题 -->
         <div class="title_div">{{ news_title }}</div>
@@ -40,13 +39,11 @@
             <pre>{{ news_content }}</pre>
         </div>
     </div>
-    <!-- 底部导航 -->
-    <!-- <Bottom style=" position: relative;" /> -->
+
 </template>
 
 <script setup>
-import TopNav from '@/components/TopNav.vue'
-import Bottom from '@/components/Bottom.vue'
+
 import { ref } from 'vue';
 const news_title = ref('热爱助力中国电竞，萍乡武功山乡村运动会圆满举办')
 const author = ref('天领新闻组')
@@ -88,26 +85,32 @@ body {
 }
 
 .news_container {
-    background-color: white;
-    width: 60%;
+    width: 70%;
     height: auto;
+    margin:0 auto;
+    /* background-color: white;
+
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-    margin-left: 20%;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    border-radius: 2px;
-    display: flex;
-    flex-direction: column;
+
+    
+    /* margin-top: 2%;
+    margin-bottom: 2%; */
+    /* padding-top: 100px; */
+    /* border-radius: 2px; */
+    /* display: flex; */
+    /* flex-direction: column; */
 }
 
 .title_div {
-    margin-top: 5%;
+    
     padding-left: 28px;
     display: flex;
     align-items: center;
+    justify-content: center;
     font-size: 22px;
     font-weight: bold;
     color: #303132;
+    padding-top: 100px;
 }
 
 .subtitle {

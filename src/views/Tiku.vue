@@ -3,48 +3,94 @@
     <div class="content">
       <div class="select">
         <ul>
-          <li v-for="item in formlist" :key="item" :class="{ active: item == activeform }" @click="changeform(item)">{{
-            item }}
+          <li v-for="(category, categoryKey) in selectLists.form" :key="categoryKey" @click="selectCategory(categoryKey);changeform()"
+            :class="{ active: categoryKey == selectedCategory }" >
+            {{ categoryKey }}
+          </li>
+        </ul>
+        <ul v-if="selectedCategory">
+          <li v-for="item in selectLists.form[selectedCategory]" :key="item" @click="selectItem(item);changeform()"
+            :class="{ active: item == selectedItem }">
+            {{ item }}
           </li>
         </ul>
         <ul>
-          <li v-for="item in citylist" :key="item" :class="{ active: item == activecity }" @click="changecity(item)">{{
-            item }}
+          <li v-for="item in selectLists.city" :key="item" @click="selectCity(item);changeform()"
+            :class="{ active: item == selectedCity }">
+            {{ item }}
           </li>
         </ul>
       </div>
-      <p>共100套</p>
+      <p>共{{items.length}}套</p>
       <div class="paper">
-        <div class="paper-item" v-for="item in 10">
+        <div class="paper-item" v-for="item in items" @click="goToDetail(item)">
           <div class="paper-left">
-            <h2>2023年北京市《无领导》面试题</h2>
-            <h3>难度：44</h3>
+            <h2>{{ item.year + item.bookName }}</h2>
+            <h3>浏览量：44</h3>
           </div>
           <span>详解</span>
         </div>
       </div>
       <div class="paper-bottom">
-        <el-pagination background layout="prev, pager, next" :total="30">
-        </el-pagination>
-      </div>
+          <el-pagination background layout="prev, pager, next" :total="10">
+          </el-pagination>
+        </div>
     </div>
   </div>
 </template>
 
-<script setup >
-import { ref, reactive, toRefs, onMounted } from 'vue'
-import TopNav from '@/components/TopNav.vue'
-import Bottom from '@/components/Bottom.vue'
-const citylist = ref(["北京市", "天津市", "上海市", "重庆市", "河北省", "山西省", "辽宁省", "吉林省", "黑龙江省", '江苏省', "浙江省", "安徽省", '福建省', '江西省', "山东省", '河南省', '湖北省', '湖南省', "广东省", "海南省", "四川省", '贵州省', "云南省", '陕西省', '甘肃省', "青海省", "台湾省", "内蒙古自治区", "广西壮族自治区", "西藏自治区", "宁夏回族自治区", "新疆维吾尔自治区", "香港特别行政区", "澳门特别行政区"])
-const formlist = ref(["无领导", "结构化", "半结构化", "面谈"])
-const activecity = ref('北京市')
-const activeform = ref('无领导')
-const changecity = function (item) {
-  activecity.value = item
+<script setup>
+import { ref, reactive, onMounted } from 'vue';
+import { getBooks } from '@/request/api/tiku';
+import { useRouter } from 'vue-router';
+const router = useRouter();
+const selectLists = reactive({
+  form: {
+    "结构化": ["不限", "人际关系", "组织管理", "应急处理", "综合分析", "套题"],
+    "无领导": ["不限", "多项选择", "选择排序", "排列", "开放题"],
+  },
+  city: ["不限", "北京市", "天津市", "上海市", "重庆市", "河北省", "山西省", "辽宁省", "吉林省", "黑龙江省", '江苏省', "浙江省", "安徽省", '福建省', '江西省', "山东省", '河南省', '湖北省', '湖南省', "广东省", "海南省", "四川省", '贵州省', "云南省", '陕西省', '甘肃省', "青海省", "台湾省", "内蒙古自治区", "广西壮族自治区", "西藏自治区", "宁夏回族自治区", "新疆维吾尔自治区", "香港特别行政区", "澳门特别行政区"],
+});
+
+const selectedCategory = ref("结构化");
+const selectedItem = ref("不限");
+const selectedCity = ref("不限");
+
+const selectCategory = (category) => {
+  selectedCategory.value = category;
+  selectedItem.value = "不限"; // Reset sub-item selection
+  console.log(category);
+};
+
+const selectItem = (item) => {
+  selectedItem.value = item;
+  console.log(item);
+  // Perform any actions or filtering based on the selected item
+};
+const selectCity = (item) => {
+  selectedCity.value = item;
+  console.log(item);
+  // Perform any actions or filtering based on the selected item
+};
+const items = ref("")
+const changeform = async()=> {
+  let res=await getBooks(selectedCategory.value,selectedCity.value)
+  items.value=res.data.data.records;
+  console.log(items.value);
 }
-const changeform = function (item) {
-  activeform.value = item
-}
+const goToDetail = (item) => {
+  console.log(item);
+  // 使用路由导航跳转到详情页，并传递 item 的信息作为参数
+  router.push({
+    name: 'questiondetail',
+    params: { bookId: item.bookId }, // 替换成实际的参数字段和值
+  });
+};
+onMounted(async () => {
+  let res = await getBooks("结构化", "广东省")
+  items.value = res.data.data.records;
+  console.log(items.value);
+})
 </script>
 <style scoped lang="scss">
 .tiku {
@@ -163,8 +209,7 @@ const changeform = function (item) {
     .paper-bottom {
       display: flex;
       justify-content: center;
-      margin: 20px 0;
+      padding: 10px 0;
     }
   }
-}
-</style>
+}</style>
