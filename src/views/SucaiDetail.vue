@@ -35,7 +35,7 @@
 <script setup>
 import { useRoute } from "vue-router"
 import { ref,onMounted } from 'vue';
-import { getBookDetail,getAnsDetail } from '@/request/api/tiku'
+import { materialDetail } from '@/request/api/sucai'
 const title = ref('')
 const showAnswer = ref(false);
 const expandAnswer = ref(false);
@@ -45,14 +45,12 @@ const route = useRoute()
 const content = ref("")
 const answer = ref("")
 onMounted(async()=>{
-    let ques=await getBookDetail(route.params.bookId)
-    let quesdata=ques.data.data
-    title.value=quesdata.year+quesdata.bookName
-    content.value=quesdata.content
-
-    let ans=await getAnsDetail(route.params.bookId)
-    let ansdata=ans.data.data
-    answer.value=ansdata
+    let res=await materialDetail(route.params.bookId)
+    let items = res.data.data
+    title.value=items.title
+    content.value=items.content
+    answer.value=items.analysis
+    console.log(items);
 })
 
 

@@ -176,12 +176,14 @@
           align-items: center;
 
           h3 {
+            
             font-size: 16px;
             font-weight: 900;
             margin-left: 20px;
           }
 
           h4 {
+            font-size: 18px;
             color: #7f7f7f;
             margin-left: 10px;
           }

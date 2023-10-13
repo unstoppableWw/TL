@@ -11,6 +11,9 @@
           <li>
           <RouterLink to="/tiku">题库</RouterLink>
         </li>
+          <li>
+          <RouterLink to="/sucai">素材</RouterLink>
+        </li>
         <li>
           <RouterLink to="/about">联系我们</RouterLink>
         </li>

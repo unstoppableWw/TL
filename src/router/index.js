@@ -29,6 +29,25 @@ const router = createRouter({
       }
     },
     {
+      path: '/sucai',
+      name: 'sucai',
+      component: () => import('../views/Sucai.vue'),
+      beforeEnter: (to, from, next) => {
+        // 检查是否有 token
+        const token = localStorage.getItem('token');
+        if (!token) {
+          // 如果没有 token，可以弹出登录窗口或者跳转到登录页面
+          // 例如，你可以使用一个登录模态框组件
+          // 也可以使用路由跳转到登录页面
+          // showModalLogin() 或者 next('/login')
+          alert('请先登录');
+        } else {
+          // 如果有 token，继续路由跳转
+          next();
+        }
+      }
+    },
+    {
       path: '/about',
       name: 'about',
       component: () => import('../views/About.vue')
@@ -42,6 +61,11 @@ const router = createRouter({
       path: '/questiondetail/:bookId',
       name: 'questiondetail',
       component: () => import('../views/QuestionDetail.vue')
+    },
+    {
+      path: '/sucaidetail/:bookId',
+      name: 'sucaidetail',
+      component: () => import('../views/SucaiDetail.vue')
     },
     {
       path: '/us',
