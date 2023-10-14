@@ -1,13 +1,13 @@
 import service from "..";
 //获取题库列表
-export function getMatrial(region, materialType, page,keyword){
+export function getMatrial(region, materialType, page, keyword){
   return service({
     method:"post",
     url:"/material/getMatrial.do",
     data: {
       region: region,
       materialType: materialType,
-      page: 1,
+      page: page,
       keyword: keyword,
     },
     headers: {

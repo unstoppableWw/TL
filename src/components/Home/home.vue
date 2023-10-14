@@ -26,77 +26,79 @@
           <div class="new-tab-content">
             <!-- 中间部分 -->
             <!-- 新闻 -->
-            <ul v-if="activeTab == 0" class="new-tab-content-ul" id="J_newsListContainer">
-              <li class="first">
-                <a class="item-href" target="_blank" href="//lol.qq.com/news/detail.shtml?docid=10912334831397866538"
-                  onclick="PTTSendClick('Notice','Notice-0','杭州亚运会电子竞技项目（英雄联盟）小组循环赛D组比赛赛果');SendEAS.sendNewsPV('index','//lol.qq.com/news/detail.shtml?docid=10912334831397866538','10912334831397866538')">
-                  广东省省考无领导即将席卷全国，就问你信不信
-                </a>
-              </li>
+            <div class="new-tab-content-mid">
+              <ul v-if="activeTab == 0" class="new-tab-content-ul" id="J_newsListContainer">
+                <li class="first">
+                  <a class="item-href" target="_blank" href="//lol.qq.com/news/detail.shtml?docid=10912334831397866538"
+                    onclick="PTTSendClick('Notice','Notice-0','杭州亚运会电子竞技项目（英雄联盟）小组循环赛D组比赛赛果');SendEAS.sendNewsPV('index','//lol.qq.com/news/detail.shtml?docid=10912334831397866538','10912334831397866538')">
+                    广东省省考无领导即将席卷全国，就问你信不信
+                  </a>
+                </li>
 
-              <li class="newsitem_event" v-for="(Inform, index) in xinwenInform" :key="index">
-                <span class="item-type" style="width: 5%;height: 20px;">赛事</span>
-                <a class="item-href" target="_blank" href="//lol.qq.com/news/detail.shtml?docid=8108336011152287680"
-                  onclick="PTTSendClick('Notice','Notice-1','杭州亚运会电子竞技项目（英雄联盟）小组循环赛B组比赛赛果');SendEAS.sendNewsPV('index','//lol.qq.com/news/detail.shtml?docid=8108336011152287680','8108336011152287680')">
-                  {{ Inform }}
-                </a>
-                <span class="item-time">09-25</span>
-              </li>
-            </ul>
-            <!-- 公告 -->
-            <ul v-if="activeTab == 1" class="new-tab-content-ul" id="J_newsListContainer">
-              <li class="first">
-                <a class="item-href" target="_blank" href="//lol.qq.com/news/detail.shtml?docid=10912334831397866538"
-                  onclick="PTTSendClick('Notice','Notice-0','杭州亚运会电子竞技项目（英雄联盟）小组循环赛D组比赛赛果');SendEAS.sendNewsPV('index','//lol.qq.com/news/detail.shtml?docid=10912334831397866538','10912334831397866538')">
-                  广东省省考无领导即将席卷全国，就问你信不信
-                </a>
-              </li>
+                <li class="newsitem_event" v-for="(Inform, index) in xinwenInform" :key="index">
+                  <span class="item-type" style="width: 5%;height: 20px;">赛事</span>
+                  <a class="item-href" target="_blank" href="//lol.qq.com/news/detail.shtml?docid=8108336011152287680"
+                    onclick="PTTSendClick('Notice','Notice-1','杭州亚运会电子竞技项目（英雄联盟）小组循环赛B组比赛赛果');SendEAS.sendNewsPV('index','//lol.qq.com/news/detail.shtml?docid=8108336011152287680','8108336011152287680')">
+                    {{ Inform }}
+                  </a>
+                  <span class="item-time">09-25</span>
+                </li>
+              </ul>
+              <!-- 公告 -->
+              <ul v-if="activeTab == 1" class="new-tab-content-ul" id="J_newsListContainer">
+                <li class="first">
+                  <a class="item-href" target="_blank" href="//lol.qq.com/news/detail.shtml?docid=10912334831397866538"
+                    onclick="PTTSendClick('Notice','Notice-0','杭州亚运会电子竞技项目（英雄联盟）小组循环赛D组比赛赛果');SendEAS.sendNewsPV('index','//lol.qq.com/news/detail.shtml?docid=10912334831397866538','10912334831397866538')">
+                    广东省省考无领导即将席卷全国，就问你信不信
+                  </a>
+                </li>
 
-              <li class="newsitem_event" v-for="(Inform, index) in gonggaoInform" :key="index">
-                <span class="item-type" style="width: 5%;height: 20px;">赛事</span>
-                <a class="item-href" target="_blank" href="//lol.qq.com/news/detail.shtml?docid=8108336011152287680"
-                  onclick="PTTSendClick('Notice','Notice-1','杭州亚运会电子竞技项目（英雄联盟）小组循环赛B组比赛赛果');SendEAS.sendNewsPV('index','//lol.qq.com/news/detail.shtml?docid=8108336011152287680','8108336011152287680')">
-                  {{ Inform }}
-                </a>
-                <span class="item-time">09-25</span>
-              </li>
-            </ul>
-            <!-- 神贴 -->
-            <ul v-if="activeTab == 2" class="new-tab-content-ul" id="J_newsListContainer">
-              <li class="first">
-                <a class="item-href" target="_blank" href="//lol.qq.com/news/detail.shtml?docid=10912334831397866538"
-                  onclick="PTTSendClick('Notice','Notice-0','杭州亚运会电子竞技项目（英雄联盟）小组循环赛D组比赛赛果');SendEAS.sendNewsPV('index','//lol.qq.com/news/detail.shtml?docid=10912334831397866538','10912334831397866538')">
-                  广东省省考无领导即将席卷全国，就问你信不信
-                </a>
-              </li>
+                <li class="newsitem_event" v-for="(Inform, index) in gonggaoInform" :key="index">
+                  <span class="item-type" style="width: 5%;height: 20px;">赛事</span>
+                  <a class="item-href" target="_blank" href="//lol.qq.com/news/detail.shtml?docid=8108336011152287680"
+                    onclick="PTTSendClick('Notice','Notice-1','杭州亚运会电子竞技项目（英雄联盟）小组循环赛B组比赛赛果');SendEAS.sendNewsPV('index','//lol.qq.com/news/detail.shtml?docid=8108336011152287680','8108336011152287680')">
+                    {{ Inform }}
+                  </a>
+                  <span class="item-time">09-25</span>
+                </li>
+              </ul>
+              <!-- 神贴 -->
+              <ul v-if="activeTab == 2" class="new-tab-content-ul" id="J_newsListContainer">
+                <li class="first">
+                  <a class="item-href" target="_blank" href="//lol.qq.com/news/detail.shtml?docid=10912334831397866538"
+                    onclick="PTTSendClick('Notice','Notice-0','杭州亚运会电子竞技项目（英雄联盟）小组循环赛D组比赛赛果');SendEAS.sendNewsPV('index','//lol.qq.com/news/detail.shtml?docid=10912334831397866538','10912334831397866538')">
+                    广东省省考无领导即将席卷全国，就问你信不信
+                  </a>
+                </li>
 
-              <li class="newsitem_event" v-for="(Inform, index) in shentieInform" :key="index">
-                <span class="item-type" style="width: 5%;height: 20px;">赛事</span>
-                <a class="item-href" target="_blank" href="//lol.qq.com/news/detail.shtml?docid=8108336011152287680"
-                  onclick="PTTSendClick('Notice','Notice-1','杭州亚运会电子竞技项目（英雄联盟）小组循环赛B组比赛赛果');SendEAS.sendNewsPV('index','//lol.qq.com/news/detail.shtml?docid=8108336011152287680','8108336011152287680')">
-                  {{ Inform }}
-                </a>
-                <span class="item-time">09-25</span>
-              </li>
-            </ul>
-            <!-- 活动 -->
-            <ul v-if="activeTab == 3" class="new-tab-content-ul" id="J_newsListContainer">
-              <li class="first">
-                <a class="item-href" target="_blank" href="//lol.qq.com/news/detail.shtml?docid=10912334831397866538"
-                  onclick="PTTSendClick('Notice','Notice-0','杭州亚运会电子竞技项目（英雄联盟）小组循环赛D组比赛赛果');SendEAS.sendNewsPV('index','//lol.qq.com/news/detail.shtml?docid=10912334831397866538','10912334831397866538')">
-                  广东省省考无领导即将席卷全国，就问你信不信
-                </a>
-              </li>
+                <li class="newsitem_event" v-for="(Inform, index) in shentieInform" :key="index">
+                  <span class="item-type" style="width: 5%;height: 20px;">赛事</span>
+                  <a class="item-href" target="_blank" href="//lol.qq.com/news/detail.shtml?docid=8108336011152287680"
+                    onclick="PTTSendClick('Notice','Notice-1','杭州亚运会电子竞技项目（英雄联盟）小组循环赛B组比赛赛果');SendEAS.sendNewsPV('index','//lol.qq.com/news/detail.shtml?docid=8108336011152287680','8108336011152287680')">
+                    {{ Inform }}
+                  </a>
+                  <span class="item-time">09-25</span>
+                </li>
+              </ul>
+              <!-- 活动 -->
+              <ul v-if="activeTab == 3" class="new-tab-content-ul" id="J_newsListContainer">
+                <li class="first">
+                  <a class="item-href" target="_blank" href="//lol.qq.com/news/detail.shtml?docid=10912334831397866538"
+                    onclick="PTTSendClick('Notice','Notice-0','杭州亚运会电子竞技项目（英雄联盟）小组循环赛D组比赛赛果');SendEAS.sendNewsPV('index','//lol.qq.com/news/detail.shtml?docid=10912334831397866538','10912334831397866538')">
+                    广东省省考无领导即将席卷全国，就问你信不信
+                  </a>
+                </li>
 
-              <li class="newsitem_event" v-for="(Inform, index) in huodongInform" :key="index">
-                <span class="item-type" style="width: 5%;height: 20px;">赛事</span>
-                <a class="item-href" target="_blank" href="//lol.qq.com/news/detail.shtml?docid=8108336011152287680"
-                  onclick="PTTSendClick('Notice','Notice-1','杭州亚运会电子竞技项目（英雄联盟）小组循环赛B组比赛赛果');SendEAS.sendNewsPV('index','//lol.qq.com/news/detail.shtml?docid=8108336011152287680','8108336011152287680')">
-                  {{ Inform }}
-                </a>
-                <span class="item-time">09-25</span>
-              </li>
-            </ul>
+                <li class="newsitem_event" v-for="(Inform, index) in huodongInform" :key="index">
+                  <span class="item-type" style="width: 5%;height: 20px;">赛事</span>
+                  <a class="item-href" target="_blank" href="//lol.qq.com/news/detail.shtml?docid=8108336011152287680"
+                    onclick="PTTSendClick('Notice','Notice-1','杭州亚运会电子竞技项目（英雄联盟）小组循环赛B组比赛赛果');SendEAS.sendNewsPV('index','//lol.qq.com/news/detail.shtml?docid=8108336011152287680','8108336011152287680')">
+                    {{ Inform }}
+                  </a>
+                  <span class="item-time">09-25</span>
+                </li>
+              </ul>
+            </div>
 
             <a target="_blank" class="btn-morenews" href="/news/index.shtml"
               onclick="PTTSendClick('Notice','Notice-more','阅读更多最新资讯')">
@@ -283,81 +285,89 @@ const onTabMouseOver = (index) => {
           width: 100%;
           height: 345px;
 
-          .new-tab-content-ul {
-
+          .new-tab-content-mid {
             width: 100%;
-            height: 305px;
-            // position: relative;
+            padding: 0 40px;
 
-            .first {
-              list-style: none;
-              background-position: 0 -458px;
-              // width: 496px;
-              height: 59px;
-              overflow: hidden;
-              line-height: 59px;
-              text-align: center;
-              font-size: 22px;
-              font-weight: 700;
-              box-sizing: border-box;
-              padding: 0 12px;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-              color: #4095E5;
+            .new-tab-content-ul {
+              
+              width: 100%;
+              height: 305px;
+              // position: relative;
 
-              .item-href {
-                color: #4095E5;
-              }
-            }
-
-            .newsitem_event {
-              list-style: none;
-              // width: 496px;
-              height: 40px;
-              line-height: 39px;
-              overflow: hidden;
-              box-sizing: border-box;
-              border-top: 1px #e0e2e2 solid;
-              text-align: left;
-              font-size: 0;
-
-              .item-type {
-
-                color: #6388c5;
-                border: 1px #97afc5 solid;
-              }
-
-              .item-href {
-                display: inline-block;
-                vertical-align: middle;
-                *zoom: 1;
-                *display: inline;
-                // width: 370px;
-                height: 39px;
+              .first {
+                
+                list-style: none;
+                background-position: 0 -458px;
+                // width: 496px;
+                height: 59px;
                 overflow: hidden;
-                margin-left: 20px;
-                color: #424242;
-                font-size: 14px;
-                letter-spacing: 1px;
+                line-height: 59px;
+                text-align: center;
+                font-size: 22px;
+                font-weight: 700;
+                box-sizing: border-box;
+                padding: 0 12px;
                 text-overflow: ellipsis;
                 white-space: nowrap;
+                color: #4095E5;
+
+                .item-href {
+                  color: #4095E5;
+                }
               }
 
-              .item-time {
-                display: inline-block;
-                vertical-align: middle;
-                *zoom: 1;
-                *display: inline;
-                // width: 50px;
-                height: 39px;
+              .newsitem_event {
+                list-style: none !important; 
+                // width: 496px;
+                height: 40px;
+                line-height: 39px;
                 overflow: hidden;
-                text-align: right;
-                font-size: 14px;
-                letter-spacing: 1px;
-                color: #9d9d9d;
-                margin-left: 18px;
+                box-sizing: border-box;
+                border-top: 1px #e0e2e2 solid;
+                text-align: left;
+                font-size: 0;
+
+                .item-type {
+
+                  color: #6388c5;
+                  border: 1px #97afc5 solid;
+                }
+
+                .item-href {
+                  display: inline-block;
+                  vertical-align: middle;
+                  *zoom: 1;
+                  *display: inline;
+                  // width: 370px;
+                  height: 39px;
+                  overflow: hidden;
+                  margin-left: 20px;
+                  color: #424242;
+                  font-size: 14px;
+                  letter-spacing: 1px;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+
+                .item-time {
+                  display: inline-block;
+                  vertical-align: middle;
+                  *zoom: 1;
+                  *display: inline;
+                  // width: 50px;
+                  height: 39px;
+                  overflow: hidden;
+                  text-align: right;
+                  font-size: 14px;
+                  letter-spacing: 1px;
+                  color: #9d9d9d;
+                  margin-left: 18px;
+                }
               }
+
             }
+
 
           }
 

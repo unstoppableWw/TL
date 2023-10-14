@@ -5,20 +5,21 @@
     </div>
     <div class="list">
       <ul>
-          <li>
-          <RouterLink to="/">首页</RouterLink>
+        <li  >
+          <RouterLink to="/" :class="{ active: route.path ==='/' }">首页</RouterLink>
         </li>
-          <li>
-          <RouterLink to="/tiku">题库</RouterLink>
+        <li  >
+          <RouterLink to="/tiku" :class="{ active: route.path === '/tiku' }">题库</RouterLink>
         </li>
-          <li>
-          <RouterLink to="/sucai">素材</RouterLink>
+        <li  >
+          <RouterLink to="/sucai" :class="{ active: route.path === '/sucai' }">素材</RouterLink>
+        </li>
+        <li >
+          <RouterLink to="/about" :class="{ active: route.path === '/about' }">联系我们</RouterLink>
         </li>
         <li>
-          <RouterLink to="/about">联系我们</RouterLink>
+          <RouterLink to="/us" :class="{ active: route.path === '/us' }">关于我们</RouterLink>
         </li>
-          <li><RouterLink to="/us">关于我们</RouterLink></li>
-       
       </ul>
     </div>
     <div class="icon" @click="show" v-if="showicon">
@@ -76,7 +77,7 @@
     </div>
   </div>
   <div class="login-bg" v-if="isshowlogin" @click="close">
-    <Login @click.stop v-model:isshowlogin="isshowlogin" v-model:showicon="showicon"/>
+    <Login @click.stop v-model:isshowlogin="isshowlogin" v-model:showicon="showicon" />
   </div>
 </template>
 
@@ -84,6 +85,9 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 import Login from '@/components/Login.vue'
+import { useRoute } from 'vue-router';
+const route = useRoute();
+console.log(route.path);
 //展示头像下的菜单栏
 const isshow = ref(false)
 //显示登录或者头像
@@ -97,7 +101,7 @@ const show = () => {
   }
 }
 const showlogin = () => {
-  isshowlogin.value=true
+  isshowlogin.value = true
 }
 const close = () => {
   if (isshowlogin.value) {
@@ -106,19 +110,19 @@ const close = () => {
 }
 
 //退出登录
-const quit=()=>{
+const quit = () => {
   localStorage.removeItem("token")
-  showicon.value=false
+  showicon.value = false
 }
 // 监听整个文档的点击事件
 onMounted(() => {
   //如果token不存在，就显示头像
-  if(!localStorage.getItem('token')){
-    isshowlogin.value=true
-    showicon.value=false
-  }else{
-    isshowlogin.value=false
-    showicon.value=true
+  if (!localStorage.getItem('token')) {
+    isshowlogin.value = true
+    showicon.value = false
+  } else {
+    isshowlogin.value = false
+    showicon.value = true
   }
   document.addEventListener('click', closeMenu)
 
@@ -135,6 +139,7 @@ const closeMenu = (event) => {
 onUnmounted(() => {
   document.removeEventListener('click', closeMenu)
 })
+
 </script>
 
 <style scoped lang="scss">
@@ -149,7 +154,7 @@ onUnmounted(() => {
   // z-index: 999;
 
   // z-index: 999;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.2);
 
   .logo {
     img {
@@ -168,11 +173,16 @@ onUnmounted(() => {
       position: relative;
       justify-content: space-around;
 
+
+
       li {
-        list-style: none;
         width: 120px;
         line-height: 40px;
         text-align: center;
+
+        .active {
+          color: #4076ea;
+        }
 
         a {
           color: white;
@@ -224,6 +234,7 @@ onUnmounted(() => {
         justify-content: center;
 
         li {
+
           .user {
             display: flex;
             align-items: center;

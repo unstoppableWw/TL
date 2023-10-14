@@ -5,8 +5,8 @@ export function getNews(type, page){
     method:"post",
     url:"/getNews/getType.do",
     data: {
-      type:1,
-      page:1
+      type:type,
+      page:page
     },
   })
 }

@@ -32,9 +32,9 @@
         </div>
       </div>
       <div class="paper-bottom">
-          <el-pagination background layout="prev, pager, next" :total="10">
+          <el-pagination background layout="prev, pager, next" :total="Number(total)" :current-page="Number(page)" @current-change="handlePageChange">
           </el-pagination>
-        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -59,24 +59,26 @@ const selectedCity = ref("不限");
 const selectCategory = (category) => {
   selectedCategory.value = category;
   selectedItem.value = "不限"; // Reset sub-item selection
-  console.log(category);
+
 };
 
 const selectItem = (item) => {
   selectedItem.value = item;
-  console.log(item);
+  
   // Perform any actions or filtering based on the selected item
 };
 const selectCity = (item) => {
   selectedCity.value = item;
-  console.log(item);
+  
   // Perform any actions or filtering based on the selected item
 };
 const items = ref("")
 const changeform = async()=> {
-  let res=await getBooks(selectedCategory.value,selectedCity.value)
+  let res=await getBooks(selectedCategory.value=="不限"?"":selectedCategory.value,selectedCity.value=="不限"?"":selectedCity.value,"1")
   items.value=res.data.data.records;
-  console.log(items.value);
+  total.value=res.data.data.total;
+  page.value='1'
+ 
 }
 const goToDetail = (item) => {
   console.log(item);
@@ -86,10 +88,18 @@ const goToDetail = (item) => {
     params: { bookId: item.bookId }, // 替换成实际的参数字段和值
   });
 };
-onMounted(async () => {
-  let res = await getBooks("结构化", "广东省")
+
+const total=ref("")
+const page = ref("1")
+const handlePageChange = async(newPage)=>{
+  let res = await getBooks(selectedCategory.value=="不限"?"":selectedCategory.value,selectedCity.value=="不限"?"":selectedCity.value,newPage)
   items.value = res.data.data.records;
-  console.log(items.value);
+}
+onMounted(async () => {
+  let res = await getBooks("", "",page.value)
+  total.value=res.data.data.total
+  items.value = res.data.data.records;
+
 })
 </script>
 <style scoped lang="scss">

@@ -7,7 +7,7 @@ export function getBooks(bookType, bookArea,page){
     data: {
       bookType: bookType,
       bookArea: bookArea,
-      page: 1
+      page: page
     },
     headers: {
       token: localStorage.getItem("token")

@@ -3,32 +3,33 @@
     <div class="content">
       <div class="select">
         <ul>
-          <li v-for="item in selectLists.type" :key="item" @click="selecttype(item);changeform()"
-            :class="{ active: item == selectedItem }" >
+          <li v-for="item in selectLists.type" :key="item" @click="selecttype(item); changeform()"
+            :class="{ active: item == selectedItem }">
             {{ item }}
           </li>
         </ul>
         <ul>
-          <li v-for="item in selectLists.city" :key="item" @click="selectCity(item);changeform()"
+          <li v-for="item in selectLists.city" :key="item" @click="selectCity(item); changeform()"
             :class="{ active: item == selectedCity }">
             {{ item }}
           </li>
         </ul>
       </div>
-      <p>共{{}}套</p>
+      <p>共{{total}}套</p>
       <div class="paper">
         <div class="paper-item" v-for="item in items" @click="goToDetail(item)">
           <div class="paper-left">
-            <h2>{{ item.year + item.title }}</h2>
+            <h2>{{ item.title }}</h2>
             <h3>描述：{{}}</h3>
           </div>
           <span>详解</span>
         </div>
       </div>
       <div class="paper-bottom">
-          <el-pagination background layout="prev, pager, next" :total="10">
-          </el-pagination>
-        </div>
+        <el-pagination background layout="prev, pager, next" :total="Number(total)" :current-page="Number(page)"
+        @current-change="handlePageChange">
+        </el-pagination>
+      </div>
     </div>
   </div>
 </template>
@@ -39,32 +40,36 @@ import { getMatrial } from '@/request/api/sucai';
 import { useRouter } from 'vue-router';
 const router = useRouter();
 const selectLists = reactive({
-  type:["不限","政治与政策","经济和就业","社会问题","科技和创新","环境和可持续发展","国际关系","文化和社会","健康和福利"],
+  type: ["不限", "政治与政策", "经济和就业", "社会问题", "科技和创新", "环境和可持续发展", "国际关系", "文化和社会", "健康和福利"],
   city: ["不限", "北京市", "天津市", "上海市", "重庆市", "河北省", "山西省", "辽宁省", "吉林省", "黑龙江省", '江苏省', "浙江省", "安徽省", '福建省', '江西省', "山东省", '河南省', '湖北省', '湖南省', "广东省", "海南省", "四川省", '贵州省', "云南省", '陕西省', '甘肃省', "青海省", "台湾省", "内蒙古自治区", "广西壮族自治区", "西藏自治区", "宁夏回族自治区", "新疆维吾尔自治区", "香港特别行政区", "澳门特别行政区"],
 });
 
 
 const selectedItem = ref("不限");
 const selectedCity = ref("不限");
+const total = ref("");
+const page = ref("1");
 
 const selecttype = (item) => {
   selectedItem.value = item;
-  console.log(item);
+
 };
 
 
 const selectCity = (item) => {
   selectedCity.value = item;
-  console.log(item);
+
   // Perform any actions or filtering based on the selected item
 };
 const items = ref("")
-const changeform = async()=> {
-  let city =selectedCity.value=="不限"?"":selectedCity.value;
-  let item =selectedItem.value=="不限"?"":selectedItem.value;
-  let res=await getMatrial(city,item,1,"")
-  items.value=res.data.data;
-  console.log(city,item,items.value);
+const changeform = async () => {
+  let city = selectedCity.value == "不限" ? "" : selectedCity.value;
+  let item = selectedItem.value == "不限" ? "" : selectedItem.value;
+  let res = await getMatrial(city, item, "1", "")
+  items.value = res.data.data.records;
+  total.value = res.data.data.total;
+  page.value="1"
+
 }
 const goToDetail = (item) => {
   console.log(item);
@@ -74,10 +79,15 @@ const goToDetail = (item) => {
     params: { bookId: item.id }, // 替换成实际的参数字段和值
   });
 };
+const handlePageChange = async (newPage) => {
+  page.value = newPage
+  let res = await getMatrial(selectedCity.value == "不限" ? "" : selectedCity.value, selectedItem.value == "不限" ? "" : selectedItem.value, page.value, "")
+  items.value = res.data.data.records;
+}
 onMounted(async () => {
-  let res=await getMatrial("","",1,"")
-  items.value = res.data.data;
-  console.log(items.value);
+  let res = await getMatrial("", "", page.value, "")
+  items.value = res.data.data.records;
+  total.value = res.data.data.total;
 })
 </script>
 <style scoped lang="scss">
@@ -200,4 +210,5 @@ onMounted(async () => {
       padding: 10px 0;
     }
   }
-}</style>
+}
+</style>
