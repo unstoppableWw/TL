@@ -11,7 +11,7 @@ export function getNews(type, page){
   })
 }
 //获取新闻详情
-export function getNews(newsId){
+export function getNewsDetail(newsId){
   return service({
     method:"post",
     url:"/admin/getNew.do",

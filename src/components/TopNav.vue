@@ -1,7 +1,7 @@
 <template>
   <div class="nav">
     <div class="logo">
-      <img src="../../logo.png" alt="">
+      <img src="/logo.png" alt="">
     </div>
     <div class="list">
       <ul>
@@ -13,9 +13,6 @@
         </li>
         <li  >
           <RouterLink to="/sucai" :class="{ active: route.path === '/sucai' }">素材</RouterLink>
-        </li>
-        <li >
-          <RouterLink to="/about" :class="{ active: route.path === '/about' }">联系我们</RouterLink>
         </li>
         <li>
           <RouterLink to="/us" :class="{ active: route.path === '/us' }">关于我们</RouterLink>
@@ -149,18 +146,13 @@ onUnmounted(() => {
   align-items: center;
   width: 100%;
   height: 72px;
-  position: absolute;
   padding: 0 15%;
-  // z-index: 999;
-
-  // z-index: 999;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #1d282d;
 
   .logo {
     img {
       width: 50px;
       height: 50px;
-
     }
   }
 
@@ -170,7 +162,7 @@ onUnmounted(() => {
 
     ul {
       display: flex;
-      position: relative;
+      
       justify-content: space-around;
 
 

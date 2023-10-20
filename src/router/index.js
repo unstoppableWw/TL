@@ -53,7 +53,7 @@ const router = createRouter({
       component: () => import('../views/About.vue')
     },
     {
-      path: '/newsdetail',
+      path: '/newsdetail/:bookId',
       name: 'newsdetail',
       component: () => import('../views/NewsDetail.vue')
     },
@@ -67,6 +67,7 @@ const router = createRouter({
       name: 'sucaidetail',
       component: () => import('../views/SucaiDetail.vue')
     },
+
     {
       path: '/us',
       name: 'us',

@@ -28,11 +28,8 @@
             <!-- 新闻 -->
             <div class="new-tab-content-mid">
               <ul v-if="activeTab == 0" class="new-tab-content-ul" id="J_newsListContainer">
-                <li class="first">
-                  <a class="item-href" target="_blank" href="//lol.qq.com/news/detail.shtml?docid=10912334831397866538"
-                    onclick="PTTSendClick('Notice','Notice-0','杭州亚运会电子竞技项目（英雄联盟）小组循环赛D组比赛赛果');SendEAS.sendNewsPV('index','//lol.qq.com/news/detail.shtml?docid=10912334831397866538','10912334831397866538')">
-                    广东省省考无领导即将席卷全国，就问你信不信
-                  </a>
+                <li class="first" v-for="item in xinwen" @click="goToDetail(item.newsId)">
+                  {{ item.title }}
                 </li>
 
                 <li class="newsitem_event" v-for="(Inform, index) in xinwenInform" :key="index">
@@ -118,7 +115,7 @@
         <div class="content2-video">
           <img src="../../assets/static/home_img/音符.svg" class="left_top_img"
             style="width: 70px;margin-top: -60px;margin-right: 280px;">
-          <video width="280" height="620" loop autoplay muted>
+          <video  loop autoplay muted>
             <source src="../../assets/static/Screen-2023-09-26-174711.mp4" type="video/mp4">
           </video>
         </div>
@@ -127,13 +124,13 @@
           <div class="text2_2">在面试的大舞台上</div>
           <div class="text2_3">社区中的对话如音符般奏响</div>
           <div class="text2_4">一起点亮学习的星空，知识之花因交流而绽放</div>
-          <img src="../../assets/static/home_img/lion0.PNG" width="150px" class="right_bottom_img">
+          <img src="../../assets/static/home_img/lion0.png" width="150px" class="right_bottom_img">
         </div>
       </div>
       <div class="content2">
         <div class="content2-video">
           <img src="../../assets/static/home_img/画笔.svg" class="left_top_img">
-          <video width="280" height="620" loop autoplay muted>
+          <video   loop autoplay muted>
             <source src="../../assets/static/Screen-2023-09-26-174711.mp4" type="video/mp4">
           </video>
         </div>
@@ -142,13 +139,13 @@
           <div class="text2_2">一位独具风采的艺术家</div>
           <div class="text2_3">勾勒着属于自己的面试策略画卷</div>
           <div class="text2_4">深入洞察自身的优势和挑战，达到超越自我的学习之境</div>
-          <img src="../../assets/static/home_img/lion1.PNG" width="200px" class="right_bottom_img">
+          <img src="../../assets/static/home_img/lion1.png" width="200px" class="right_bottom_img">
         </div>
       </div>
       <div class="content2">
         <div class="content2-video">
           <img src="../../assets/static/home_img/火焰.svg" class="left_top_img">
-          <video width="280" height="620" loop autoplay muted>
+          <video  loop autoplay muted>
             <source src="../../assets/static/Screen-2023-09-26-174711.mp4" type="video/mp4">
           </video>
         </div>
@@ -157,13 +154,13 @@
           <div class="text2_2">与志同道合的伙伴交汇</div>
           <div class="text2_3">共同点燃内心的求知之火</div>
           <div class="text2_4">在对练的旋律中，行动与互助的奏鸣曲是突破困境的钥匙</div>
-          <img src="../../assets/static/home_img/lion6.PNG" width="200px" class="right_bottom_img">
+          <img src="../../assets/static/home_img/lion6.png" width="200px" class="right_bottom_img">
         </div>
       </div>
       <div class="content2">
         <div class="content2-video">
           <img src="../../assets/static/home_img/钥匙.svg" class="left_top_img">
-          <video width="280" height="620" loop autoplay muted>
+          <video   loop autoplay muted>
             <source src="../../assets/static/Screen-2023-09-26-174711.mp4" type="video/mp4">
           </video>
         </div>
@@ -172,13 +169,13 @@
           <div class="text2_2">与伙伴们开启一场知识之旅</div>
           <div class="text2_3">将问题解锁的钥匙交替传递</div>
           <div class="text2_4">以对话为编码，打造出一幅幅令人惊叹的学习之图</div>
-          <img src="../../assets/static/home_img/lion1.PNG" width="200px" class="right_bottom_img">
+          <img src="../../assets/static/home_img/lion1.png" width="200px" class="right_bottom_img">
         </div>
       </div>
       <div class="content2">
         <div class="content2-video">
           <img src="../../assets/static/home_img/灯塔.svg" class="left_top_img" style="width: 180px;">
-          <video width="280" height="620" loop autoplay muted>
+          <video   loop autoplay muted>
             <source src="../../assets/static/Screen-2023-09-26-174711.mp4" type="video/mp4">
           </video>
         </div>
@@ -187,13 +184,13 @@
           <div class="text2_2">一座丰富多彩的面试题库</div>
           <div class="text2_3">如智者明灯般的专业解析</div>
           <div class="text2_4">助您探索面试领域未知的星辰，照亮迷雾中的上岸之门</div>
-          <img src="../../assets/static/home_img/lion5.PNG" width="200px" class="right_bottom_img">
+          <img src="../../assets/static/home_img/lion5.png" width="200px" class="right_bottom_img">
         </div>
       </div>
       <div class="content2">
         <div class="content2-video">
           <img src="../../assets/static/home_img/钻石2.svg" class="left_top_img">
-          <video width="280" height="620" loop autoplay muted>
+          <video   loop autoplay muted>
             <source src="../../assets/static/Screen-2023-09-26-174711.mp4" type="video/mp4">
           </video>
         </div>
@@ -202,7 +199,7 @@
           <div class="text2_2">会员身份犹如一面闪烁的宝镜</div>
           <div class="text2_3">在智慧的舞台上享受各种尊贵特权</div>
           <div class="text2_4">助您征服知识的浪潮，让学海之航更加畅通无阻</div>
-          <img src="../../assets/static/home_img/lion3.PNG" width="200px" class="right_bottom_img">
+          <img src="../../assets/static/home_img/lion3.png" width="200px" class="right_bottom_img">
         </div>
       </div>
     </div>
@@ -211,17 +208,32 @@
 
 <script setup>
 import { ElButton } from 'element-plus';
-import { ref } from 'vue';
-
+import { ref,onMounted } from 'vue';
+import { getNews } from '../../request/api/news.js'
+import { useRouter } from 'vue-router';
+const router = useRouter();
 const tabs = ['新闻', '公告', '神贴', '活动'];
-const xinwenInform = ['广东省省考无领导即将席卷全国，就问你信不信', '广东省省考无领导即将席卷全国，就问你信不信', '广东省省考无领导即将席卷全国，就问你信不信', '广东省省考无领导即将席卷全国，就问你信不信', '广东省省考无领导即将席卷全国，就问你信不信', '广东省省考无领导即将席卷全国，就问你信不信']
-const gonggaoInform = ['你以为呢', '广东省省考无领导即将席卷全国，就问你信不信', '广东省省考无领导即将席卷全国，就问你信不信', '广东省省考无领导即将席卷全国，就问你信不信', '广东省省考无领导即将席卷全国，就问你信不信', '广东省省考无领导即将席卷全国，就问你信不信']
-const shentieInform = ['我不觉得，就问你信不信', '广东省省考无领导即将席卷全国，就问你信不信', '广东省省考无领导即将席卷全国，就问你信不信', '广东省省考无领导即将席卷全国，就问你信不信', '广东省省考无领导即将席卷全国，就问你信不信', '广东省省考无领导即将席卷全国，就问你信不信']
-const huodongInform = ['开玩笑', '广东省省考无领导即将席卷全国，就问你信不信', '广东省省考无领导即将席卷全国，就问你信不信', '广东省省考无领导即将席卷全国，就问你信不信', '广东省省考无领导即将席卷全国，就问你信不信', '广东省省考无领导即将席卷全国，就问你信不信']
+const xinwen = ref("")
+const gonggaoInform = ['']
+const shentieInform = ['']
+const huodongInform = ['']
 const activeTab = ref(0);
 const onTabMouseOver = (index) => {
   activeTab.value = index
 };
+const goToDetail = (item) => {
+  console.log(item);
+  // 使用路由导航跳转到详情页，并传递 item 的信息作为参数
+  router.push({
+    name: 'newsdetail',
+    params: { bookId: item }, // 替换成实际的参数字段和值
+  });
+};
+onMounted(async()=>{
+  let res = await getNews("新闻","1")
+  xinwen.value=res.data.data.records
+  console.log(res.data.data.records);
+})
 
 </script>
 
@@ -252,7 +264,7 @@ const onTabMouseOver = (index) => {
 
       .announcement {
         flex: 3;
-
+        width: 550px;
         // background-color: pink;
         // 公告样式
         .title {
@@ -413,7 +425,8 @@ const onTabMouseOver = (index) => {
       // width: 77%;
       height: 800px;
       margin-top: 10px;
-
+      margin-bottom: 100px;
+      
       // margin: 0 auto;
       // background-color: pink;
       video::-webkit-media-controls {

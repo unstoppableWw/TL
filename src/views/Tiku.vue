@@ -97,6 +97,7 @@ const handlePageChange = async(newPage)=>{
 }
 onMounted(async () => {
   let res = await getBooks("", "",page.value)
+  console.log(res.data);
   total.value=res.data.data.total
   items.value = res.data.data.records;
 
@@ -104,7 +105,7 @@ onMounted(async () => {
 </script>
 <style scoped lang="scss">
 .tiku {
-  padding-top: 70px;
+  
   width: 100%;
   height: 100%;
   background-color: #f5f7fa;

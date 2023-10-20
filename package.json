@@ -9,15 +9,17 @@
     "test:unit": "vitest"
   },
   "dependencies": {
+    "autoprefixer": "^10.4.16",
     "axios": "^1.5.1",
     "element-plus": "^2.3.14",
     "pinia": "^2.1.6",
+    "postcss-pxtorem": "^6.0.0",
     "sass": "^1.67.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.3.4",
+    "@vitejs/plugin-vue": "^4.4.0",
     "@vue/test-utils": "^2.4.1",
     "css-loader": "^6.8.1",
     "jsdom": "^22.1.0",
